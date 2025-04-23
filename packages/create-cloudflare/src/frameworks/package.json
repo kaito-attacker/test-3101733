@@ -1,0 +1,24 @@
+{
+	"name": "frameworks_clis_info",
+	"info": [
+		"This package.json is only used to keep track of the frameworks cli dependencies",
+		"so that we can use dependabot to update these dependencies automatically."
+	],
+	"dependencies": {
+		"create-astro": "4.11.2",
+		"create-analog": "1.8.1",
+		"@angular/create": "19.2.8",
+		"create-docusaurus": "3.7.0",
+		"create-hono": "0.17.0",
+		"create-next-app": "15.3.1",
+		"create-qwik": "1.13.0",
+		"create-vite": "6.4.1",
+		"create-remix": "2.16.5",
+		"create-react-router": "7.5.1",
+		"create-solid": "0.6.2",
+		"create-vue": "3.16.4",
+		"gatsby": "5.14.3",
+		"sv": "0.8.1",
+		"nuxi": "3.25.0"
+	}
+}

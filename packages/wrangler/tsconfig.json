@@ -1,0 +1,19 @@
+{
+	"extends": "@cloudflare/workers-tsconfig/tsconfig.json",
+	"compilerOptions": {
+		"module": "CommonJS",
+		"types": ["node"],
+		"jsx": "react-jsx"
+	},
+	"include": ["**/*.ts", "**/*.tsx", "**/*.js"],
+	"exclude": [
+		"emitted-types",
+		"node_modules",
+		"*-dist",
+		"src/miniflare-cli",
+		"templates",
+		"**/__tests__",
+		"**/*.test.ts",
+		"kv-asset-handler.js"
+	]
+}

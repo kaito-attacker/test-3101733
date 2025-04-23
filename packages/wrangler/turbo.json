@@ -1,0 +1,70 @@
+{
+	"$schema": "http://turbo.build/schema.json",
+	"extends": ["//"],
+	"tasks": {
+		"build": {
+			"inputs": ["$TURBO_DEFAULT$", "!**/__tests__/**", "!e2e/**"],
+			"outputs": [
+				"miniflare-dist/**",
+				"emitted-types/**",
+				"wrangler-dist/**",
+				"config-schema.json"
+			],
+			"env": [
+				"ALGOLIA_APP_ID",
+				"ALGOLIA_PUBLIC_KEY",
+				"NODE_ENV",
+				"SOURCEMAPS",
+				"SPARROW_SOURCE_KEY",
+				"SENTRY_DSN"
+			],
+			"passThroughEnv": [
+				"CF_PAGES_UPLOAD_JWT",
+				"CF_PAGES",
+				"CI",
+				"CLOUDFLARE_ACCOUNT_ID",
+				"CLOUDFLARE_API_TOKEN",
+				"CUSTOM_BUILD_VAR",
+				"EXPERIMENTAL_MIDDLEWARE",
+				"FORMAT_WRANGLER_ERRORS",
+				"http_proxy",
+				"HTTP_PROXY",
+				"https_proxy",
+				"HTTPS_PROXY",
+				"HYPERDRIVE_DATABASE_URL",
+				"LC_ALL",
+				"NO_D1_WARNING",
+				"NO_HYPERDRIVE_WARNING",
+				"PATH",
+				"PWD",
+				"SYSTEMROOT",
+				"TZ",
+				"WORKERS_CI",
+				"WRANGLER_API_ENVIRONMENT",
+				"WRANGLER_AUTH_DOMAIN",
+				"WRANGLER_DISABLE_EXPERIMENTAL_WARNING",
+				"WRANGLER_DISABLE_REQUEST_BODY_DRAINING",
+				"WRANGLER_LOG",
+				"WRANGLER_SEND_METRICS",
+				"WRANGLER_WORKER_REGISTRY_PORT"
+			]
+		},
+		"test:ci": {
+			"dependsOn": ["build"],
+			"env": ["VITEST", "NODE_DEBUG", "MINIFLARE_WORKERD_PATH"]
+		},
+		"test:e2e": {
+			"inputs": ["e2e/**"],
+			"dependsOn": ["build", "create-cloudflare#build"],
+			"env": [
+				"VITEST",
+				"NODE_DEBUG",
+				"MINIFLARE_WORKERD_PATH",
+				"WRANGLER",
+				"WRANGLER_IMPORT",
+				"CLOUDFLARE_ACCOUNT_ID",
+				"CLOUDFLARE_API_TOKEN"
+			]
+		}
+	}
+}
